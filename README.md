@@ -22,7 +22,7 @@ This project requires 3 main components: a Pi, a PN532 NFC reader/writer, and NT
     `sudo apt-get update && sudo apt-get install libnfc-dev`
 
 3. Compile sources. This will probably take a minute or two the first time on a Pi.
-
+    (you should be in pimiibo directory)
     `make`
 
 
@@ -59,15 +59,17 @@ This section is dependent on your NFC board and how plan to communicate with it.
 
     | NFC Board Pin | Pi Pin        |
     |:-------------:|:-------------:|
-    | Ground        | Ground        |
-    | VCC           | 5 V           |
+    | Ground        | Ground        |-GPIO Pin 6
+    | VCC           | 5 V           |-GPIO Pin 4
     | SDA           | SDA.1 (Pin 3) |
     | SCL           | SCL.1 (Pin 5) |
 
-
+Note: Make sure you have set the DIP swith for set the interface is I2C, as the default is HSU(UART)
 6. Check to make sure it is working.
 
     `sudo i2cdetect –y 1`
+    ( when I use this cmd, it tell no matched bus, I use such cmd: sudo i2cdetect 1
+      Note, 1 is ONE, not L/l)
 
     If all goes well, you should see a device show up as a number on that list (mine is 24). If the list is empty (all dashes), double check your setup.
 
