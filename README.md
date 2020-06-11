@@ -5,9 +5,9 @@ This is a tool for spoofing amiibo NFC tags using a Raspberry Pi and PN532 NFC r
 ## Hardware
 This project requires 3 main components: a Pi, a PN532 NFC reader/writer, and NTAG 215 NFC tags. You *must* use NTAG 215 tags. Any other tag type (e.g NTAG 210, 216, etc.) **will not work**. Anything meeting these requirements should be fine, but here is my setup for reference:
 
-1. Raspberry Pi Zero W ($10). A Pi Zero (not W) would cost $5.
+1. Raspberry Pi Zero W ($10). A Pi Zero (not W) would cost $5.(I test Pi4B, it runs well.)
 
-2. Elechouse PN532 NFC Module v3 ($10): [Amazon](https://smile.amazon.com/gp/product/B01NBSW0NU/).
+2. Elechouse PN532 NFC Module v3 ($10): [Amazon](https://smile.amazon.com/gp/product/B01NBSW0NU/). RMB20 in Taobao China.
 
 3. NTAG 215 tags. I've personally tested with [these](https://smile.amazon.com/gp/product/B078WMQPCZ/) ($10 for 11) and [these](https://smile.amazon.com/gp/product/B0759W25TL/) ($28 for 60).
 
@@ -68,7 +68,7 @@ Note: Make sure you have set the DIP swith for set the interface is I2C, as the 
 6. Check to make sure it is working.
 
     `sudo i2cdetect –y 1`
-    ( when I use this cmd, it tell no matched bus, I use such cmd: sudo i2cdetect 1
+    ( when I use this cmd in Pi4B, it tells no matched bus, I use such cmd: sudo i2cdetect 1
       Note, 1 is ONE, not L/l)
 
     If all goes well, you should see a device show up as a number on that list (mine is 24). If the list is empty (all dashes), double check your setup.
@@ -86,7 +86,7 @@ This is the file containing Nintendo's key, which they use to encrypt/decrypt da
 
 Start the program:
 `./pimiibo path-to-key-file path-to-amiibo-file`
-
+(ie: ./pimiibo key.bin Redd.bin    here you should put *.bin in ./pimiibo
 Once you see `***Scan tag***`, place and hold your blank NFC tag on the reader/writer. You should then see messages scrolling past with each data page as it begins writing them. ***Do not remove your tag until the write is finished.*** When you see `Finished writing tag`, it is safe to remove your tag and enjoy your new amiibo!
 
 ## Common Problems
