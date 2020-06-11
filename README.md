@@ -59,15 +59,15 @@ This section is dependent on your NFC board and how plan to communicate with it.
 
     | NFC Board Pin | Pi Pin        |
     |:-------------:|:-------------:|
-    | Ground        | Ground        |-GPIO Pin 6
-    | VCC           | 5 V           |-GPIO Pin 4
+    | Ground        | Ground  -GPIO Pin 6      |
+    | VCC           | 5 V   -GPIO Pin 4        |
     | SDA           | SDA.1 (Pin 3) |
     | SCL           | SCL.1 (Pin 5) |
 
 Note: Make sure you have set the DIP swith for set the interface is I2C, as the default is HSU(UART)
 6. Check to make sure it is working.
 
-    `sudo i2cdetect –y 1`
+    sudo i2cdetect –y 1
     ( when I use this cmd in Pi4B, it tells no matched bus, I use such cmd: sudo i2cdetect 1
       Note, 1 is ONE, not L/l)
 
